@@ -1,0 +1,77 @@
+﻿@using ECommerce.Models.ViewModels;
+
+@model ProductPageViewModel
+@{
+    var productPageViewModel = Model;
+
+    var list = productPageViewModel.Products;
+    var totalSize = productPageViewModel.PageInfo.Size;
+    var totalPages = productPageViewModel.PageInfo.Page;
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-6 pt-4">
+            <h2 class="text-primary">Products</h2>
+        </div>
+        <div class="col-6 pt-4 text-end">
+            <a class="btn btn-primary" asp-controller="Product" asp-action="Upsert">
+                <i class="bi bi-plus-circle"></i>
+                Create a new product
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-light bg-light table-striped">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var product in list)
+        {
+            <tr>
+                <td>@(product.Title)</td>
+                <td>@Html.Raw(product.Description)</td>
+                <td>@(product.ISBN)</td>
+                <td>@(product.Author)</td>
+                <td>@(product.Price)</td>
+                <td>
+                    <div class="btn-group w-100">
+                        <a asp-controller="Product" asp-action="Upsert" asp-route-id="@product.Id" class="btn btn-primary">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" asp-controller="Product" asp-action="Index" asp-route-pagenumber="1">First</a></li>
+            @for (var i = 0; i < totalPages; i++)
+            {
+                <li class="page-item"><a class="page-link" asp-controller="Product" asp-action="Index" asp-route-pagenumber="@(i + 1)">@(i + 1)</a></li>
+            }
+            <li class="page-item"><a class="page-link" asp-controller="Product" asp-action="Index" asp-route-pagenumber="@(productPageViewModel.PageInfo.Page)">Last</a></li>
+        </ul>
+    </nav>
+</div>

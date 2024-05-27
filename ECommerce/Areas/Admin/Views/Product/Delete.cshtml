@@ -1,0 +1,41 @@
+﻿@using ECommerce.Models.ViewModels;
+
+@model ProductViewModel
+
+<form asp-controller="Product" asp-action="Delete" method="post">
+    <input asp-for="Id" hidden />
+    <div class="border p-4 border-dark">
+        <div class="row">
+            <h2>Delete product</h2>
+        </div>
+
+        <div class="row mb-2">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" disabled class="form-control" />
+        </div>
+        <div class="row mb-2">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" disabled class="form-control" />
+        </div>
+        <div class="row mb-2">
+            <label asp-for="ISBN"></label>
+            <input asp-for="ISBN" disabled class="form-control" />
+        </div>
+        <div class="row mb-2">
+            <label asp-for="Author"></label>
+            <input asp-for="Author" disabled class="form-control" />
+        </div>
+        <div class="row mb-2">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" disabled class="form-control" />
+        </div>
+        <div class="row mt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-danger form-control">Delete</button>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-outline-secondary form-control" asp-controller="Product" asp-action="Index">Back to products</a>
+            </div>
+        </div>
+    </div>
+</form>
