@@ -80,7 +80,7 @@ namespace ECommerce.Areas.Customer.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Privacy()
+		public IActionResult Privacy()
         {
             return View();
         }

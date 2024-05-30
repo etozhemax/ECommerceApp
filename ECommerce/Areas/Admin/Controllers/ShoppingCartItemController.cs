@@ -100,5 +100,14 @@ namespace ECommerce.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "ShoppingCartItem");
         }
-    }
+
+		public async Task<IActionResult> Summary()
+		{
+			var userId = User.GetUserId();
+
+			var summaryViewModel = new SummaryViewModel();
+
+			return View(summaryViewModel);
+		}
+	}
 }

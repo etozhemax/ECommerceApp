@@ -1,4 +1,5 @@
 ﻿using ECommerce.Models;
+using ECommerce.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +13,11 @@ namespace ECommerce.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<EcommerceApplicationUser> EcommerceUsers { get; set; }
         public DbSet<ShoppingCartItem> ShoppingItems { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+        public DbSet<OrderInfo> OrderInfos { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
 
-        public ECommerceDbContext(DbContextOptions<ECommerceDbContext> options) : base(options)
+		public ECommerceDbContext(DbContextOptions<ECommerceDbContext> options) : base(options)
         {
 
         }
